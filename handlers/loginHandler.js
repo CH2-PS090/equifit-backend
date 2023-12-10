@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt');
 const dbConfig = require('../dbConfig');
 
 const pool = mysql.createPool(dbConfig);
-const secretKey = 'your_secret_key';
 
 async function loginHandler(req, res) {
   const { email, password } = req.body;
@@ -21,11 +20,26 @@ async function loginHandler(req, res) {
         // creating token
         const token = generateToken(user.id, user.email);
 
+        // Set token to header
+        res.header('Authorization', `Bearer ${token}`);
+
+        // check preference available?
+        const [userResults] = await pool.query('SELECT * FROM preferences WHERE userId = ?', [user.id]);
+
+        var preference = '';
+
+        if (userResults.length > 0) {
+          preference = 'filled';
+        } else {
+          preference = 'None';
+        }
+
         result = {
             token: token,
             user_id: user.id,
             name: user.name,
             email : user.email,
+            preference : preference,
         };
 
         // success response

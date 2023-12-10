@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const pool = mysql.createPool(dbConfig);
 
 async function registerHandler(req, res) {
-  const { email, name, password, passwordConfirmation } = req.body;
+  const { email, name, password, passwordConfirmation} = req.body;
 
   if(password != passwordConfirmation){
     res.status(401).json({ message: 'password did not match' });
