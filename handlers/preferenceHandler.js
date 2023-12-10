@@ -60,7 +60,6 @@ async function initialPreferenceHandler(req, res) {
             separator = true;
           }
           const textQuery = frontQuery + endQuery + ')';
-          console.log(textQuery);
           try {
             const [results] = await pool.query(textQuery);
             res.status(201).json({ status: 201, message: 'User preferences successfully added' });
@@ -128,7 +127,6 @@ async function updatePreferenceHandler(req, res) {
             separator = true;
           }
           textQuery += ` WHERE userId = ${userId}`;
-          console.log(textQuery);
           try {
             const [results] = await pool.query(textQuery);
             res.status(201).json({ status: 201, message: 'User preferences successfully updated' });
