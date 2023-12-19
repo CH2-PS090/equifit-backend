@@ -1,7 +1,7 @@
 module.exports = {
-    host: 'localhost',
+    host: '34.101.224.237',
     user: 'root',
-    password: '',
+    password: '5;KQRYYy3iV8.Jz}',
     database: 'equifit',
     waitForConnections: true,
     connectionLimit: 10,
