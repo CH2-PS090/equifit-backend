@@ -6,6 +6,7 @@ const registerHandler = require('./handlers/registerHandler');
 const loginHandler = require('./handlers/loginHandler');
 const {initialPreferenceHandler} = require('./handlers/preferenceHandler');
 const {getUserDataHandler, updateUserHandler} = require('./handlers/usersHandler');
+const {postHistory, getHistory} = require('./handlers/historyHandler');
 const upload = multer();
 
 // Register route
@@ -20,5 +21,8 @@ router.post('/initpreference', upload.none(), initialPreferenceHandler);
 router.get('/getuserdata', upload.none(), getUserDataHandler);
 
 router.post('/updateuserdata', upload.none(), updateUserHandler);
+
+router.post('/history', upload.none(), postHistory);
+router.get('/history', upload.none(), getHistory);
 
 module.exports = router;

@@ -24,22 +24,22 @@ async function loginHandler(req, res) {
         res.header('Authorization', `Bearer ${token}`);
 
         // check preference available?
-        const [userResults] = await pool.query('SELECT * FROM preferences WHERE userId = ?', [user.id]);
+        // const [userResults] = await pool.query('SELECT * FROM preferences WHERE userId = ?', [user.id]);
 
-        var preference = '';
+        // var preference = '';
 
-        if (userResults.length > 0) {
-          preference = 'filled';
-        } else {
-          preference = 'None';
-        }
+        // if (userResults.length > 0) {
+        //   preference = 'filled';
+        // } else {
+        //   preference = 'None';
+        // }
 
         result = {
             token: token,
             user_id: user.id,
             name: user.name,
             email : user.email,
-            preference : preference,
+            // preference : preference,
         };
 
         // success response
