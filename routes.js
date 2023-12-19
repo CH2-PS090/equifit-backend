@@ -4,8 +4,8 @@ const router = express.Router();
 
 const registerHandler = require('./handlers/registerHandler');
 const loginHandler = require('./handlers/loginHandler');
-const {initialPreferenceHandler, updatePreferenceHandler} = require('./handlers/preferenceHandler');
-
+const {initialPreferenceHandler} = require('./handlers/preferenceHandler');
+const {getUserDataHandler, updateUserHandler} = require('./handlers/usersHandler');
 const upload = multer();
 
 // Register route
@@ -17,6 +17,8 @@ router.post('/login', upload.none(), loginHandler);
 // Initialize preference route
 router.post('/initpreference', upload.none(), initialPreferenceHandler);
 
-router.post('/updatepreference', upload.none(), updatePreferenceHandler);
+router.get('/getuserdata', upload.none(), getUserDataHandler);
+
+router.post('/updateuserdata', upload.none(), updateUserHandler);
 
 module.exports = router;

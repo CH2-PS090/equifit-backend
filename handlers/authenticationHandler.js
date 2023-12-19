@@ -16,4 +16,20 @@ function verifyToken(token) {
   }
 }
 
-module.exports = { generateToken, verifyToken };
+function getTokenData(token) {
+  const tokenParts = token.split(' ');
+  if (tokenParts.length === 2 && tokenParts[0].toLowerCase() === 'bearer') {
+    const token = tokenParts[1];
+    // Verify the token
+    const decodedToken = verifyToken(token);
+
+    // Check if the token is valid
+    if (decodedToken) {
+      const { userId, email } = decodedToken;
+      return { userId, email };
+    }
+  }
+  return null;
+}
+
+module.exports = { generateToken, getTokenData };

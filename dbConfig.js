@@ -1,5 +1,5 @@
 module.exports = {
-    host: '34.128.98.3',
+    host: 'localhost',
     user: 'root',
     password: '',
     database: 'equifit',
