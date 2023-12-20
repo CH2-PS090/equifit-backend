@@ -29,7 +29,7 @@ async function loginHandler(req, res) {
         var preference = '';
 
         if (userResults.length > 0) {
-          preference = 'filled';
+         preference = 'filled';
         } else {
           preference = 'None';
         }
