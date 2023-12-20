@@ -41,6 +41,13 @@ async function updateUserHandler(req, res) {
       }
             
       if(newEmail !== undefined){
+        const [existingUser] = await pool.query('SELECT * FROM users WHERE email = ?', [newEmail]);
+  
+        if (existingUser.length > 0) {
+          res.status(409).json({ status: 409, message: 'Email already exists' });
+          return;
+        }
+        
         if(separator){
           textQuery += ', ';
         }
