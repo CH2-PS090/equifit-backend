@@ -47,7 +47,7 @@ async function updateUserHandler(req, res) {
           res.status(409).json({ status: 409, message: 'Email already exists' });
           return;
         }
-        
+
         if(separator){
           textQuery += ', ';
         }
@@ -60,6 +60,12 @@ async function updateUserHandler(req, res) {
           res.status(401).json({ message: 'password did not match' });
           return;
         }
+
+        if(password.length < 8){
+          res.status(401).json({ message: 'password must be 8 or more characters' });
+          return;
+        }
+
         const hashedPassword = await bcrypt.hash(newPassword, 10);
         if(separator){
           textQuery += ', ';
