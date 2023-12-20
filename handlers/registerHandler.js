@@ -11,6 +11,11 @@ async function registerHandler(req, res) {
     return;
   }
 
+  if(password.length < 8){
+    res.status(401).json({ message: 'password must be 8 or more characters' });
+    return;
+  }
+  
   // encrypt password
   const hashedPassword = await bcrypt.hash(password, 10);
 
