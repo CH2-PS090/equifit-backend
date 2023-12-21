@@ -59,8 +59,13 @@ async function loginHandler(req, res) {
 }
 
 async function logoutHandler(req, res) {
-  delete req.headers['Authorization']
-  res.json({ message: 'Logout berhasil' });
+  const authHeader = req.headers['authorization'];
+  if (authHeader !== undefined){
+    delete req.headers['Authorization'];
+    res.json({ message: 'Logout berhasil' });
+    return;
+  }
+  res.json({ message: 'Can not log out, no user logged on!' });
 }
 
 module.exports = { loginHandler, logoutHandler };

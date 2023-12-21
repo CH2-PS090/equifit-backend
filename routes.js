@@ -16,7 +16,7 @@ router.post('/register', upload.none(), registerHandler);
 router.post('/login', upload.none(), loginHandler);
 
 // Logout route
-router.post('/logout', upload.none(), logoutHandler)
+router.get('/logout', upload.none(), logoutHandler);
 
 // Initialize preference route
 router.post('/initpreference', upload.none(), initialPreferenceHandler);
