@@ -61,7 +61,7 @@ async function loginHandler(req, res) {
 async function logoutHandler(req, res) {
   const authHeader = req.headers['authorization'];
   if (authHeader !== undefined){
-    delete req.headers['Authorization'];
+    res.removeHeader('Authorization');
     res.json({ message: 'Logout berhasil' });
     return;
   }
