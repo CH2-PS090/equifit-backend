@@ -58,4 +58,9 @@ async function loginHandler(req, res) {
   }
 }
 
-module.exports = loginHandler;
+async function logoutHandler(req, res) {
+  delete req.headers['Authorization']
+  res.json({ message: 'Logout berhasil' });
+}
+
+module.exports = { loginHandler, logoutHandler };
