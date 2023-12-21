@@ -8,3 +8,5 @@ This is a Javascript code built using Node.js, so make sure you have Node.js ins
   4. Run the app using the command: `node app.js`.
   5. The server will run in the localhost with the port 3000.
   6. If it doesn't show any errors then you have successfully run the service and you can try it using postman
+
+You can check the public API documentation that we used for the mobile app [here](https://documenter.getpostman.com/view/26038169/2s9Ykq6fwv).
