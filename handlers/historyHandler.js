@@ -47,8 +47,8 @@ async function getHistory(req, res) {
     try{
         const authHeader = req.headers['authorization'];
         const { userId, email } = getTokenData(authHeader);
-        const [results] = await pool.query('SELECT * FROM history WHERE id_user = ?', [userId]);
-        const history = results
+        const [results] = await pool.query('SELECT * FROM history WHERE id_user = ? ORDER BY last_check DESC LIMIT 1', [userId]);
+        const history = results[0];
         const result = {
             email : email,
             history : history
